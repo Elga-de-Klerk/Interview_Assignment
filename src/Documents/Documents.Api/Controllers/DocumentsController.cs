@@ -1,15 +1,24 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Documents.Application.DocumentMutation;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Documents.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DocumentsController : ControllerBase
+    [Consumes("multipart/form-data")]
+    public class DocumentsController(
+        IDocumentMutationService documentMutationService) : ControllerBase
     {
-        [HttpPost]
-        public IActionResult MutateDocument()
+        [HttpPost("mutate")]
+        public async Task<IActionResult> MutateDocument(IFormFile file)
         {
-            throw new NotImplementedException();
+            if (file is null)
+                return BadRequest("A file is required.");
+            // Empty file?
+
+            var result = await documentMutationService.Mutate(file.Name, file.OpenReadStream());
+
+            return File(result.Content, "text/plain", result.FileName);
         }
     }
 }
