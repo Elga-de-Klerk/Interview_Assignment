@@ -4,6 +4,6 @@
     {
         public required string FileName { get; init; }
 
-        public required Stream Content { get; init; }
+        public required byte[] Content { get; init; }
     }
 }

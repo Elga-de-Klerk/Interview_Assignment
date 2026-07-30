@@ -1,4 +1,6 @@
+using Documents.Application.Abstractions;
 using Documents.Application.DocumentMutation;
+using Documents.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,8 @@ builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IDocumentMutationService, DocumentMutationService>();
+builder.Services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+builder.Services.AddSingleton<IRandomSequenceGenerator, RandomSequenceGenerator>();
 
 var app = builder.Build();
 
