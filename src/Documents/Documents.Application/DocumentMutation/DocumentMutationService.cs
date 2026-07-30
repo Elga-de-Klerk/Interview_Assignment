@@ -7,7 +7,6 @@ namespace Documents.Application.DocumentMutation
     {
         public async Task<DocumentMutationResult> Mutate(string fileName, Stream content)
         {
-            // todo: filename is incorrect
             using var reader = new StreamReader(content);
 
             var text = await reader.ReadToEndAsync();
