@@ -14,9 +14,8 @@ namespace Documents.Api.Controllers
         {
             if (file is null)
                 return BadRequest("A file is required.");
-            // Empty file?
 
-            var result = await documentMutationService.Mutate(file.Name, file.OpenReadStream());
+            var result = await documentMutationService.Mutate(file.FileName, file.OpenReadStream());
 
             return File(result.Content, "text/plain", result.FileName);
         }
