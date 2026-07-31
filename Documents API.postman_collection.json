@@ -1,0 +1,168 @@
+{
+  "info": {
+    "_postman_id": "02e17b5b-ce50-4ae2-aa58-dd7ea7d5f803",
+    "name": "Documents API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "2431136",
+    "_collection_link": "https://go.postman.co/collection/2431136-02e17b5b-ce50-4ae2-aa58-dd7ea7d5f803?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Mutate document (valid file)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", () => {\r",
+              "    pm.response.to.have.status(200);\r",
+              "})\r",
+              "\r",
+              "pm.test(\"Content-Type is text/plain\", function () {\r",
+              "    pm.expect(pm.response.headers.get(\"Content-Type\"))\r",
+              "        .to.include(\"text/plain\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Timestamp and random sequence are present\", () => {\r",
+              "    const body = pm.response.text();\r",
+              "\r",
+              "    pm.expect(body).to.include(\"Mutated on:\");\r",
+              "    pm.expect(body).to.include(\"Random sequence:\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": "postman-cloud:///1f18ce08-18a3-4f40-a6a0-a5bd5e603329"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/Documents/mutate",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "Documents",
+            "mutate"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Mutate document (invalid file - expect 400)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 400\", () => {\r",
+              "    pm.response.to.have.status(400);\r",
+              "})\r",
+              "\r",
+              "pm.test(\"Returns error message\", () => {\r",
+              "    const body = pm.response.text();\r",
+              "\r",
+              "    pm.expect(body).to.include(\"The uploaded file does not contain valid text content.\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": "postman-cloud:///1f18ce1b-33f8-4210-ac17-63d41a485a57"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/Documents/mutate",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "Documents",
+            "mutate"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Mutate document (no file - expect 400)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 400\", () => {\r",
+              "    pm.response.to.have.status(400);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Contains error message\", () => {\r",
+              "    const body = pm.response.json();\r",
+              "\r",
+              "    pm.expect(body.errors).to.have.property(\"file\");\r",
+              "    pm.expect(body.errors.file[0]).to.include(\"The file field is required.\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/documents/mutate",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "documents",
+            "mutate"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://localhost:7119"
+    }
+  ]
+}
