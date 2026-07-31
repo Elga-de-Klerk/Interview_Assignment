@@ -16,7 +16,7 @@
 
         public TextDocument Mutate(DateTimeOffset timestamp, string randomSequence)
         {
-            if (string.IsNullOrEmpty(randomSequence))
+            if (string.IsNullOrWhiteSpace(randomSequence))
                 throw new ArgumentException("Random sequence must be provided.", nameof(randomSequence));
 
             var mutatedContent =
