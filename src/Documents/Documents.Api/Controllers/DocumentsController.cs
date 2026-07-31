@@ -10,14 +10,16 @@ namespace Documents.Api.Controllers
         IDocumentMutationService documentMutationService) : ControllerBase
     {
         [HttpPost("mutate")]
-        public async Task<IActionResult> MutateDocument(IFormFile file)
+        public async Task<IActionResult> MutateDocument(IFormFile file, CancellationToken cancellationToken)
         {
             if (file is null)
                 return BadRequest("A file is required.");
 
-            var result = await documentMutationService.Mutate(file.FileName, file.OpenReadStream());
+            var result = await documentMutationService.Mutate(file.FileName, file.OpenReadStream(), cancellationToken);
 
-            return File(result.Content, "text/plain", result.FileName);
+            return result is { IsSuccess: true, Value: { } mutationResult } ? 
+                File(mutationResult.Content, "text/plain", mutationResult.FileName) : 
+                BadRequest(result.Error);
         }
     }
 }

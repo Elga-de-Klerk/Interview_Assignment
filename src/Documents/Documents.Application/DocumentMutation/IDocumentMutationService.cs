@@ -1,7 +1,9 @@
-﻿namespace Documents.Application.DocumentMutation
+﻿using Documents.Application.Common;
+
+namespace Documents.Application.DocumentMutation
 {
     public interface IDocumentMutationService
     {
-        Task<DocumentMutationResult> Mutate(string fileName, Stream content);
+        Task<Result<DocumentMutationResult>> Mutate(string fileName, Stream stream, CancellationToken cancellationToken);
     }
 }
