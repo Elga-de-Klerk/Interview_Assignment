@@ -1,5 +1,9 @@
 ﻿namespace Documents.Domain
 {
+    /// <summary>
+    /// Class represents a simple text document.
+    /// Encapsulates a method to mutate the file content.
+    /// </summary>
     public sealed record TextDocument
     {
         public string FileName { get; }
@@ -14,6 +18,15 @@
             Content = content ?? string.Empty;
         }
 
+        /// <summary>
+        /// Method for mutating the TextDocument, 
+        /// appending the given timestamp and random sequence.
+        /// The original instance is left unchanged.
+        /// </summary>
+        /// <param name="timestamp">The current time in DateTimeOffset</param>
+        /// <param name="randomSequence">A random sequence of characters</param>
+        /// <returns cref="TextDocument"></returns>
+        /// <exception cref="ArgumentException"></exception>
         public TextDocument Mutate(DateTimeOffset timestamp, string randomSequence)
         {
             if (string.IsNullOrWhiteSpace(randomSequence))

@@ -9,6 +9,13 @@ namespace Documents.Api.Controllers
     public class DocumentsController(
         IDocumentMutationService documentMutationService) : ControllerBase
     {
+        /// <summary>
+        /// Allows the user to upload a text file and returns a copy with 
+        /// the current time and a random character sequence appended.
+        /// </summary>
+        /// <param name="file">The file to be mutated.</param>
+        /// <param name="cancellationToken">Request's abort signal if client disconnects.</param>
+        /// <returns cref="Task<IActionResult>></returns>
         [HttpPost("mutate")]
         public async Task<IActionResult> MutateDocument(IFormFile file, CancellationToken cancellationToken)
         {

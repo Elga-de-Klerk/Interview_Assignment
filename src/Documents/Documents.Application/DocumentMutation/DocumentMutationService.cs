@@ -6,6 +6,7 @@ using System.Text.Unicode;
 
 namespace Documents.Application.DocumentMutation
 {
+    /// <inheritdoc/>
     public class DocumentMutationService(
         IDateTimeProvider dateTimeProvider,
         IRandomSequenceGenerator randomSequenceGenerator) : IDocumentMutationService
