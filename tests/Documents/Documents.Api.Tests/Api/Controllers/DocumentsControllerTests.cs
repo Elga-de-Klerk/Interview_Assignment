@@ -1,10 +1,10 @@
-﻿using Document.Api.Tests.Builders;
-using Document.Api.Tests.Fixtures;
-using Documents.Application.DocumentMutation;
+﻿using Documents.Application.DocumentMutation;
+using Documents.Tests.Api.Builders;
+using Documents.Tests.Api.Fixtures;
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
 
-namespace Document.Api.Tests.Controllers
+namespace Documents.Tests.Api.Controllers
 {
     public class DocumentsControllerTests
     {

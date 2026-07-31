@@ -2,7 +2,7 @@
 using Documents.Application.DocumentMutation;
 using NSubstitute;
 
-namespace Document.Api.Tests.Fixtures
+namespace Documents.Tests.Api.Fixtures
 {
     internal class DocumentsControllerFixture
     {

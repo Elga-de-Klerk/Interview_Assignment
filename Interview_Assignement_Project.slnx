@@ -1,16 +1,11 @@
 <Solution>
-  <Folder Name="/src/" />
-  <Folder Name="/src/Documents/">
+  <Folder Name="/src/">
     <Project Path="src/Documents/Documents.Api/Documents.Api.csproj" />
     <Project Path="src/Documents/Documents.Application/Documents.Application.csproj" />
     <Project Path="src/Documents/Documents.Domain/Documents.Domain.csproj" />
     <Project Path="src/Documents/Documents.Infrastructure/Documents.Infrastructure.csproj" />
   </Folder>
-  <Folder Name="/tests/" />
-  <Folder Name="/tests/Documents/">
-    <Project Path="tests/Documents/Documents.Api.Tests/Document.Api.Tests.csproj" />
-    <Project Path="tests/Documents/Documents.Application.Tests/Document.Application.Tests.csproj" />
-    <Project Path="tests/Documents/Documents.Domain.Tests/Document.Domain.Tests.csproj" />
-    <Project Path="tests/Documents/Documents.Infrastructure.Tests/Document.Infrastructure.Tests.csproj" />
+  <Folder Name="/tests/">
+    <Project Path="tests/Documents/Documents.Api.Tests/Documents.Tests.csproj" />
   </Folder>
 </Solution>

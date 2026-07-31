@@ -2,7 +2,7 @@
 using NSubstitute;
 using System.Text;
 
-namespace Document.Api.Tests.Builders
+namespace Documents.Tests.Api.Builders
 {
     internal class FormFileBuilder
     {
