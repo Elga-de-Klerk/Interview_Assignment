@@ -1,7 +1,5 @@
-﻿using Documents.Application.Abstractions;
-using Documents.Application.DocumentMutation;
+﻿using Documents.Application.DocumentMutation;
 using Documents.Tests.Application.Fixtures;
-using NSubstitute;
 using System.Text;
 
 namespace Documents.Tests.Application.DocumentMutation
@@ -37,7 +35,7 @@ namespace Documents.Tests.Application.DocumentMutation
 
             var documentMutationResult = Assert.IsType<DocumentMutationResult>(result.Content);
             Assert.Equal(fileName, documentMutationResult.FileName);
-            
+
             var resultContentAsString = Encoding.UTF8.GetString(documentMutationResult.Content);
             Assert.Equal(expectedContent, resultContentAsString);
         }
@@ -63,7 +61,7 @@ namespace Documents.Tests.Application.DocumentMutation
         {
             yield return [new byte[] { 0xFF, 0xFE }];
             yield return [new byte[] { 0xC0, 0x80 }];
-            yield return [new byte[] { 0x80, 0x80, 0x80 }]; 
+            yield return [new byte[] { 0x80, 0x80, 0x80 }];
         }
 
         [Theory]

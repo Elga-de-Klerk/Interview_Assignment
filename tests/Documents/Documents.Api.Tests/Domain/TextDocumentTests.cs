@@ -51,7 +51,7 @@ namespace Documents.Tests.Domain
             var timestamp = new DateTimeOffset(2026, 7, 30, 12, 0, 0, TimeSpan.Zero);
             var randomSequence = "sdf3a21b";
 
-            var expectedContent = 
+            var expectedContent =
                 $"{Content}{Environment.NewLine}{Environment.NewLine}" +
                 $"Mutated on: 2026-07-30 12:00:00 +00:00 | Random sequence: {randomSequence}";
 
