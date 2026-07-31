@@ -57,5 +57,26 @@ namespace Documents.Tests.Api.Controllers
             var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
             Assert.Equal("A file is required.", badRequestResult.Value);
         }
+
+        [Fact]
+        public async Task MutateDocument_WhenServiceFails_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var fixture = new DocumentsControllerFixture();
+            var file = new FormFileBuilder().WithFullObject().Build();
+            var error = "Service failed";
+            var serviceResult = Result<DocumentMutationResult>.Failure(error);
+
+            var controller = fixture
+                .SetupDocumentMutationServiceToReturn(serviceResult)
+                .Build();
+
+            // Act
+            var result = await controller.MutateDocument(file, CancellationToken.None);
+
+            // Assert
+            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+            Assert.Equal(error, badRequestResult.Value);
+        }
     }
 }
