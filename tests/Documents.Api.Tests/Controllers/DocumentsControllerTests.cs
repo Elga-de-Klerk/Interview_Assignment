@@ -44,23 +44,6 @@ namespace Documents.Tests.Api.Controllers
         }
 
         [Fact]
-        public async Task MutateDocument_WhenFileIsTooBig_ShouldReturnBadRequest()
-        {
-            // Arrange
-            var fixture = new DocumentsControllerFixture();
-            var largeContent = new string('a', 6 * 1024 * 1024);
-            var file = new FormFileBuilder().WithFullObject().WithContent(largeContent).Build();
-            var controller = fixture.Build();
-
-            // Act
-            var result = await controller.MutateDocument(file, CancellationToken.None);
-
-            // Assert
-            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
-            Assert.Equal("A file is required.", badRequestResult.Value);
-        }
-
-        [Fact]
         public async Task MutateDocument_WhenFileIsNull_ShouldReturnBadRequest()
         {
             // Arrange

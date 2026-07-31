@@ -6,6 +6,9 @@
     <Project Path="src/Documents.Infrastructure/Documents.Infrastructure.csproj" />
   </Folder>
   <Folder Name="/tests/">
-    <Project Path="tests/Documents.Tests/Documents.Tests.csproj" />
+    <Project Path="tests/Documents.Api.Tests/Documents.Api.Tests.csproj" />
+    <Project Path="tests/Documents.Application.Tests/Documents.Application.Tests.csproj" />
+    <Project Path="tests/Documents.Domain.Tests/Documents.Domain.Tests.csproj" />
+    <Project Path="tests/Documents.Infrastructure.Tests/Documents.Infrastructure.Tests.csproj" />
   </Folder>
 </Solution>
