@@ -29,13 +29,15 @@ namespace Documents.Tests.Application.DocumentMutation
                 $"Mutated on: 2026-07-30 12:00:00 +00:00 | Random sequence: {randomSequence}";
 
             // Act
-            var result = await service.Mutate(fileName, stream);
+            var result = await service.Mutate(fileName, stream, CancellationToken.None);
 
             // Assert
-            Assert.IsType<DocumentMutationResult>(result);
-            Assert.Equal(fileName, result.FileName);
+            Assert.True(result.IsSuccess);
+
+            var documentMutationResult = Assert.IsType<DocumentMutationResult>(result.Content);
+            Assert.Equal(fileName, documentMutationResult.FileName);
             
-            var resultContentAsString = Encoding.UTF8.GetString(result.Content);
+            var resultContentAsString = Encoding.UTF8.GetString(documentMutationResult.Content);
             Assert.Equal(expectedContent, resultContentAsString);
         }
     }

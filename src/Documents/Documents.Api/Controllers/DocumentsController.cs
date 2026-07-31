@@ -17,7 +17,7 @@ namespace Documents.Api.Controllers
 
             var result = await documentMutationService.Mutate(file.FileName, file.OpenReadStream(), cancellationToken);
 
-            return result is { IsSuccess: true, Value: { } mutationResult } ? 
+            return result is { IsSuccess: true, Content: { } mutationResult } ? 
                 File(mutationResult.Content, "text/plain", mutationResult.FileName) : 
                 BadRequest(result.Error);
         }

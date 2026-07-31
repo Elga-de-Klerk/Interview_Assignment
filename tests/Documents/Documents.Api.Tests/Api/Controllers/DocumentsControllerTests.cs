@@ -1,4 +1,5 @@
-﻿using Documents.Application.DocumentMutation;
+﻿using Documents.Application.Common;
+using Documents.Application.DocumentMutation;
 using Documents.Tests.Api.Builders;
 using Documents.Tests.Api.Fixtures;
 using Microsoft.AspNetCore.Mvc;
@@ -21,14 +22,15 @@ namespace Documents.Tests.Api.Controllers
                 .Build();
 
             var mutatedContent = "Mutated content";
-            var mutationResult = new DocumentMutationResult() { FileName = fileName, Content = Encoding.UTF8.GetBytes(mutatedContent) };
+            var documentMutationResult = new DocumentMutationResult() { FileName = fileName, Content = Encoding.UTF8.GetBytes(mutatedContent) };
+            var serviceResult = Result<DocumentMutationResult>.Success(documentMutationResult);
 
             var controller = fixture
-                .SetupDocumentMutationServiceToReturn(mutationResult)
+                .SetupDocumentMutationServiceToReturn(serviceResult)
                 .Build();
 
             // Act
-            var result = await controller.MutateDocument(file);
+            var result = await controller.MutateDocument(file, CancellationToken.None);
 
             // Assert
             var fileResult = Assert.IsType<FileContentResult>(result);
@@ -49,7 +51,7 @@ namespace Documents.Tests.Api.Controllers
             var controller = fixture.Build();
 
             // Act
-            var result = await controller.MutateDocument(null!);
+            var result = await controller.MutateDocument(null!, CancellationToken.None);
 
             // Assert
             var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);

@@ -3,10 +3,10 @@
     public class Result<T>
     {
         public bool IsSuccess { get; init; }
-        public T? Value { get; init; }
+        public T? Content { get; init; }
         public string? Error { get; init; }
 
-        public static Result<T> Success(T value) => new() { IsSuccess = true, Value = value, Error = null };
-        public static Result<T> Failure(string error) => new() { IsSuccess = false, Value = default, Error = error };
+        public static Result<T> Success(T content) => new() { IsSuccess = true, Content = content, Error = null };
+        public static Result<T> Failure(string error) => new() { IsSuccess = false, Content = default, Error = error };
     }
 }
