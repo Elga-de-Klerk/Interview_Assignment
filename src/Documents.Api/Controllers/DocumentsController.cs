@@ -17,6 +17,7 @@ namespace Documents.Api.Controllers
         /// <returns cref="Task<IActionResult>></returns>
         [HttpPost("mutate")]
         [Consumes("multipart/form-data")]
+        [RequestSizeLimit(5 * 1024 * 1024)]
         public async Task<IActionResult> MutateDocument(IFormFile file, CancellationToken cancellationToken)
         {
             if (file is null)
