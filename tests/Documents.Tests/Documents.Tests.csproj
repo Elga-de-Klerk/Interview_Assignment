@@ -20,8 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\Documents\Documents.Domain\Documents.Domain.csproj" />
-    <ProjectReference Include="..\..\..\src\Documents\Documents.Api\Documents.Api.csproj" />
+    <ProjectReference Include="..\..\src\Documents.Domain\Documents.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Documents.Api\Documents.Api.csproj" />
   </ItemGroup>
 
 </Project>
