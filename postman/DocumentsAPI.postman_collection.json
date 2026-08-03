@@ -1,7 +1,7 @@
 {
   "info": {
     "_postman_id": "02e17b5b-ce50-4ae2-aa58-dd7ea7d5f803",
-    "name": "Documents API",
+    "name": "DocumentsAPI",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "2431136",
     "_collection_link": "https://go.postman.co/collection/2431136-02e17b5b-ce50-4ae2-aa58-dd7ea7d5f803?source=collection_link"
@@ -45,7 +45,7 @@
             {
               "key": "file",
               "type": "file",
-              "src": "postman-cloud:///1f18ce08-18a3-4f40-a6a0-a5bd5e603329"
+              "src": ["postman/valid-file.txt"]
             }
           ]
         },
@@ -95,7 +95,7 @@
             {
               "key": "file",
               "type": "file",
-              "src": "postman-cloud:///1f18ce1b-33f8-4210-ac17-63d41a485a57"
+              "src": ["postman/invalid-file.png"]
             }
           ]
         },
