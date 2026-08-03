@@ -56,5 +56,5 @@ jobs:
 
       - name: Run Postman collection
         run: |
-          newman run postman/Documents API.postman_collection.json \
+          newman run postman/DocumentsAPI.postman_collection.json \
             --env-var "baseUrl=http://localhost:5000"
