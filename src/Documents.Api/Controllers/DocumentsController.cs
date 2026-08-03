@@ -28,6 +28,6 @@ namespace Documents.Api.Controllers
             return result is { IsSuccess: true, Content: { } mutationResult } ?
                 File(mutationResult.Content, "text/plain", mutationResult.FileName) :
                 BadRequest(result.Error);
-        
+        }
     }
 }
