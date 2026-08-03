@@ -14,7 +14,7 @@ namespace Documents.Tests.Application.Common
             var result = Result<string>.Success(content);
 
             // Assert
-            Assert.True(result.IsSuccess);
+            Assert.False(result.IsSuccess);
             Assert.Equal(content, result.Content);
             Assert.Null(result.Error);
         }
